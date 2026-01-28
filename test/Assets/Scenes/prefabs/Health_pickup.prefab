@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8749962846421422939}
   - component: {fileID: 8283996214574085630}
   - component: {fileID: 2584851473672907219}
+  - component: {fileID: 4511819359781099727}
   m_Layer: 0
   m_Name: Health_pickup
   m_TagString: Untagged
@@ -110,3 +111,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4511819359781099727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301407026165951890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13f6b66be61b1c64ea24916891e65228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
