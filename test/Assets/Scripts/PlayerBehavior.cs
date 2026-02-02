@@ -22,6 +22,7 @@ public class PlayerBehavior : MonoBehaviour
     {
         _vInput = Input.GetAxis("Vertical") * MoveSpeed;
         _hInput = Input.GetAxis("Horizontal") * RotateSpeed;
+        _isShooting |= Input.GetKeyDown(KeyCode.Space);
     }
 
     void FixedUpdate()
@@ -36,37 +37,23 @@ public class PlayerBehavior : MonoBehaviour
             this.transform.forward * _vInput * Time.fixedDeltaTime);
         // 5
         _rb.MoveRotation(_rb.rotation * angleRot);
-    }
 
-
-    void Start()
-    {
-
-    }
-
-    void Update() 
-    {
-        _isShooting |= Input.GetKeyDown(KeyCode.Space);
-    }
-
-    void FixedUpdate()
-    {
         if (_isShooting)
         {
+            // 5
             Vector3 spawnPos = transform.position +
                                    transform.forward * 1f;
-
+            // 6
             GameObject newBullet = Instantiate(Bullet, spawnPos,
-                                        this.transform.rotation);
-
+                                       this.transform.rotation);
+            // 7
             Rigidbody bulletRB =
-               newBullet.GetComponent<Rigidbody>();
+                newBullet.GetComponent<Rigidbody>();
 
+            // 8
             bulletRB.linearVelocity = this.transform.forward *
-                                         BulletSpeed;
-
+                                          BulletSpeed;
         }
-        _isShooting = false;
 
     }
     private bool IsGrounded()
