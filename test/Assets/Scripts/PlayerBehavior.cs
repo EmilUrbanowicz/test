@@ -7,6 +7,9 @@ public class PlayerBehavior : MonoBehaviour
     private float _vInput;
     private float _hInput;
     private Rigidbody _rb;
+    public GameObject Bullet;
+    public float BulletSpeed = 100f;
+    private bool _isShooting;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,5 +36,41 @@ public class PlayerBehavior : MonoBehaviour
             this.transform.forward * _vInput * Time.fixedDeltaTime);
         // 5
         _rb.MoveRotation(_rb.rotation * angleRot);
+    }
+
+
+    void Start()
+    {
+
+    }
+
+    void Update() 
+    {
+        _isShooting |= Input.GetKeyDown(KeyCode.Space);
+    }
+
+    void FixedUpdate()
+    {
+        if (_isShooting)
+        {
+            Vector3 spawnPos = transform.position +
+                                   transform.forward * 1f;
+
+            GameObject newBullet = Instantiate(Bullet, spawnPos,
+                                        this.transform.rotation);
+
+            Rigidbody bulletRB =
+               newBullet.GetComponent<Rigidbody>();
+
+            bulletRB.linearVelocity = this.transform.forward *
+                                         BulletSpeed;
+
+        }
+        _isShooting = false;
+
+    }
+    private bool IsGrounded()
+    {
+    
     }
 }
