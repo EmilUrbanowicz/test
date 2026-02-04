@@ -10,6 +10,8 @@ public class PlayerBehavior : MonoBehaviour
     public GameObject Bullet;
     public float BulletSpeed = 100f;
     private bool _isShooting;
+    public float JumpVelocity = 5f;
+    private bool _isJumping; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +25,7 @@ public class PlayerBehavior : MonoBehaviour
         _vInput = Input.GetAxis("Vertical") * MoveSpeed;
         _hInput = Input.GetAxis("Horizontal") * RotateSpeed;
         _isShooting |= Input.GetKeyDown(KeyCode.Space);
+        _isJumping |= Input.GetKeyDown(KeyCode.J);
     }
 
     void FixedUpdate()
@@ -55,9 +58,17 @@ public class PlayerBehavior : MonoBehaviour
                                           BulletSpeed;
         }
 
+        if(_isJumping)
+        {
+            _rb.AddForce(Vector3.up * JumpVelocity, ForceMode.Impulse);
+        }
+
+        _isJumping = false;
     }
     private bool IsGrounded()
     {
-    
+        return true;
     }
+
+    
 }

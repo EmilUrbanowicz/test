@@ -3,12 +3,12 @@ using UnityEngine;
 public class ItemBehaviour : MonoBehaviour
 {
     // 1
-    public GameBehavior GameManager;
+    public gamebehaviour GameManager;
     void Start()
     {
         // 2
         GameManager = GameObject.Find("Game Manager")
-            .GetComponent<GameBehavior>();
+            .GetComponent<gamebehaviour>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,9 +18,11 @@ public class ItemBehaviour : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             // 3
-            Destroy(this.transform.gameObject);
+            Destroy(this.gameObject);
             // 4
             Debug.Log("Item collected!");
+
+            GameManager.Items += 1;
         }
 
         if (collision.gameObject.name == "Player")
