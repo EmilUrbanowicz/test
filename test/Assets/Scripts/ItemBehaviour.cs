@@ -7,7 +7,7 @@ public class ItemBehaviour : MonoBehaviour
     void Start()
     {
         // 2
-        GameManager = GameObject.Find("Game Manager")
+        GameManager = GameObject.Find("game manager")
             .GetComponent<gamebehaviour>();
     }
 
