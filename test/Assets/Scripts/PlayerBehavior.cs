@@ -7,16 +7,22 @@ public class PlayerBehavior : MonoBehaviour
     private float _vInput;
     private float _hInput;
     private Rigidbody _rb;
+    private CapsuleCollider _col;
     public GameObject Bullet;
     public float BulletSpeed = 100f;
     private bool _isShooting;
     public float JumpVelocity = 5f;
-    private bool _isJumping; 
+    private bool _isJumping;
+    private gamebehaviour _gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _col = GetComponent<CapsuleCollider>();
+        // 2 
+        _gameManager = GameObject.Find("Game Manager")
+            .GetComponent<gamebehaviour>();
     }
 
     // Update is called once per frame
@@ -70,5 +76,13 @@ public class PlayerBehavior : MonoBehaviour
         return true;
     }
 
-    
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Enemy")
+        {
+            _gameManager.HP -= 1;
+        }
+    }
+
+
 }
