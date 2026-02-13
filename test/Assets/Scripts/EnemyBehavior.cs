@@ -10,6 +10,8 @@ public class EnemyBehavior : MonoBehaviour
     public List<Transform> Locations;
     private int _locationIndex = 0;
     public Transform Player;
+    private int _lives = 3;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnTriggerEnter(Collider other)
     {
@@ -65,5 +67,27 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
+    public int EnemyLives
+    {
+        get { return _lives; }
+        private set
+        {
+            _lives = value;
+            if (_lives <= 0)
+            {
+                Destroy(this.gameObject);
+                Debug.Log("Enemy down.");
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Bullet(Clone)")
+        {
+            EnemyLives -= 1;
+            Debug.Log("Crtical hit!");
+        }
+    }
 
 }
