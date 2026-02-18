@@ -1,8 +1,12 @@
 using CustomExtensions;
+using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
+
 
 public class gamebehaviour : MonoBehaviour, IManager 
 {
@@ -15,10 +19,11 @@ public class gamebehaviour : MonoBehaviour, IManager
     public Button WinButton;
     public Button LossButton;
     private string _state;
-    
+    public Stack<Loot> LootStack = new Stack<Loot>();
 
 
-   
+
+
     public int Items
     {
         get { return _itemsCollected; }
@@ -98,7 +103,22 @@ public class gamebehaviour : MonoBehaviour, IManager
         _state = "Game Manager initialized..";
         _state.FancyDebug();
         Debug.Log(_state);
+
+        LootStack.Push(new Loot("Sword of Doom", 5));
+        LootStack.Push(new Loot("HP Boost", 1));
+        LootStack.Push(new Loot("Golden Key", 3));
+        LootStack.Push(new Loot("pair of Winged Boots", 2));
+        LootStack.Push(new Loot("Mythril Bracer", 4));
     }
+
+    public void PrintLootReport()
+    {
+        var currentItem = LootStack.Pop();
+        var nextItem = LootStack.Peek();
+        Debug.LogFormat("you got a {0}! You've got a good change of finding a {1} next!", currentItem.Name, nextItem.Name);
+        Debug.LogFormat("there are {0} random loot items waiting for you!", LootStack.Count);
+    }
+
 
 
 

@@ -23,6 +23,8 @@ public class ItemBehaviour : MonoBehaviour
             Debug.Log("Item collected!");
 
             GameManager.Items += 1;
+
+            GameManager.PrintLootReport();
         }
 
         if (collision.gameObject.name == "Player")
