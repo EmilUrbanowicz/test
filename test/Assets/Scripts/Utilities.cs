@@ -3,10 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 
-public class Utilities
-{
-    
-}
+
 
 using UnityEngine.SceneManagement;
 
@@ -37,27 +34,6 @@ public static class Utilties
 
         return true;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

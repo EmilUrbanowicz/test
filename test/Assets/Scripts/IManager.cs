@@ -1,9 +1,5 @@
 using UnityEngine;
 
-public class IManager
-{
-    
-}
 
 public interface IManager
 {

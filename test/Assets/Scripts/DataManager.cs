@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DataManager : MonoBehaviour, IManage
+public class DataManager : MonoBehaviour, IManager
 {
     private string _state;
     public string State

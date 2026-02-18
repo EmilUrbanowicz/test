@@ -43,7 +43,7 @@ public class gamebehaviour : MonoBehaviour, IManager
 
     public void RestartScene()
     {
-        Utilities.RestartLevel(0);
+        Utilties.RestartLevel(0);
     }
     public int HP
     {

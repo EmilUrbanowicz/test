@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class CustomExtensions
+public class CustomExtensionss
+{
+
+}
+
 namespace CustomExtensions
 {
     // 2 
