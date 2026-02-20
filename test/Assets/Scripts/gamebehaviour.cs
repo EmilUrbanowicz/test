@@ -5,6 +5,7 @@ using UnityEditor.Build.Reporting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Linq; 
 using static System.Net.Mime.MediaTypeNames;
 
 
@@ -109,15 +110,41 @@ public class gamebehaviour : MonoBehaviour, IManager
         LootStack.Push(new Loot("Golden Key", 3));
         LootStack.Push(new Loot("pair of Winged Boots", 2));
         LootStack.Push(new Loot("Mythril Bracer", 4));
+        FilterLoot();
     }
 
     public void PrintLootReport()
     {
         var currentItem = LootStack.Pop();
         var nextItem = LootStack.Peek();
-        Debug.LogFormat("you got a {0}! You've got a good change of finding a {1} next!", currentItem.Name, nextItem.Name);
+        Debug.LogFormat("you got a {0}! You've got a good chance of finding a {1} next!", currentItem.Name, nextItem.Name);
         Debug.LogFormat("there are {0} random loot items waiting for you!", LootStack.Count);
     }
+
+    public void FilterLoot()
+    {
+        var rareLoot = from item in LootStack
+                           // 2
+                       where item.Rarity >= 3
+                       // 3
+                       orderby item.Rarity
+                       // 4
+                       select item;
+
+
+        foreach (var item in rareLoot)
+        {
+            Debug.LogFormat("rare item: {0}!", item.Name);
+        }
+    }
+
+    public bool LootPredicate(Loot loot)
+    {
+        return loot.rarity >= 3;
+    }
+
+
+
 
 
 

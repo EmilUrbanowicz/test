@@ -22,18 +22,15 @@ public class ItemBehaviour : MonoBehaviour
             // 4
             Debug.Log("Item collected!");
 
+            Debug.Log(GameManager.Items);
+
             GameManager.Items += 1;
+
+            Debug.Log(GameManager.Items);
 
             GameManager.PrintLootReport();
         }
 
-        if (collision.gameObject.name == "Player")
-        {
-            Destroy(this.gameObject);
-            Debug.Log("Item collected!");
-            // 3
-            GameManager.Items += 1;
-        }
     }
 
     
