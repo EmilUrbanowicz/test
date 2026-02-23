@@ -125,9 +125,9 @@ public class gamebehaviour : MonoBehaviour, IManager
     {
         var rareLoot = from item in LootStack
                            // 2
-                       where item.Rarity >= 3
+                       where item.rarity >= 3
                        // 3
-                       orderby item.Rarity
+                       orderby item.rarity
                        // 4
                        select item;
 
