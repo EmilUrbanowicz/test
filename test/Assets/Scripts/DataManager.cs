@@ -302,19 +302,25 @@ public class DataManager : MonoBehaviour, IManager
 
     public void DeserializeJSON()
     {
-        if (File.Exists(_jsonWeapons))
+        using (StreamReader stream = new StreamReader(_jsonWeapons))
         {
-            var jsonString = stream.ReadToEnd();
-            var weaponData = JsonUtility.FromJson<WeaponShop>
-             (jsonString);
-
-            foreach (var weapon in weaponData.inventory)
+            if (File.Exists(_jsonWeapons))
             {
-                Debug.LogFormat("Weapon: {0} - Damage: {1}",
-                  weapon.Name, weapon.Damage);
+                var jsonString = stream.ReadToEnd();
+                var weaponData = JsonUtility.FromJson<WeaponShop>
+                 (jsonString);
+
+                foreach (var weapon in weaponData.inventory)
+                {
+                    Debug.LogFormat("Weapon: {0} - Damage: {1}",
+                      weapon.Name, weapon.Damage);
+                }
             }
         }
+
+
     }
+
 
 
 
