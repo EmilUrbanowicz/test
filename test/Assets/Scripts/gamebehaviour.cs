@@ -13,7 +13,7 @@ public class gamebehaviour : MonoBehaviour, IManager
 {
     private int _itemsCollected = 0;
     private int _playerHP = 10;
-    public int MaxItems = 4;
+    public int MaxItems = 10;
     public TMP_Text HealthText;
     public TMP_Text ItemText;
     public TMP_Text ProgressText;
@@ -32,7 +32,7 @@ public class gamebehaviour : MonoBehaviour, IManager
         {
             _itemsCollected = value;
             ItemText.text = "Items Collected: " + Items;
-            if (_itemsCollected >= MaxItems)
+            if (_itemsCollected >= 10)
             {
               
                 WinButton.gameObject.SetActive(true);
@@ -40,7 +40,7 @@ public class gamebehaviour : MonoBehaviour, IManager
             }
             else
             {
-                ProgressText.text = "Item found, only " + (MaxItems - _itemsCollected) + " more!";
+                ProgressText.text = "Item found, only " + (10 - _itemsCollected) + " more!";
             }
 
 
