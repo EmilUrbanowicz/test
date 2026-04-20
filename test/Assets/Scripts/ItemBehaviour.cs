@@ -19,7 +19,10 @@ public class ItemBehaviour : MonoBehaviour
         {
             // 3
             Destroy(this.gameObject);
-            // 4
+
+            var audioSource = GetComponent<AudioSource>();
+            audioSource.Play();
+
             Debug.Log("Item collected!");
 
             Debug.Log(GameManager.Items);
@@ -29,6 +32,8 @@ public class ItemBehaviour : MonoBehaviour
             Debug.Log(GameManager.Items);
 
             GameManager.PrintLootReport();
+
+            
         }
 
     }
